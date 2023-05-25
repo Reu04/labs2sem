@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lab2.exe"
+			"path" : "cmake_testapp.exe"
 		},
 		{
-			"path" : "lab2.pdb"
+			"path" : "cmake_testapp.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -52,11 +52,16 @@
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
 			]
 		}
 	],
-	"id" : "lab2::@6890427a1f51a3e7e1df",
+	"id" : "cmake_testapp::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -76,8 +81,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "lab2",
-	"nameOnDisk" : "lab2.exe",
+	"name" : "cmake_testapp",
+	"nameOnDisk" : "cmake_testapp.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -89,7 +94,12 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
 			]
 		}
 	],
@@ -99,6 +109,36 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "DynamicArray.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "LinkedList.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "ArraySequence.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "LinkedListSequence.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "UserInterface.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

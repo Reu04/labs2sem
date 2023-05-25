@@ -635,7 +635,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/lab2"
+			"value" : "C:/Program Files (x86)/Project"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -851,7 +851,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "lab2"
+			"value" : "cmake_testapp"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1230,7 +1230,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "lab2_BINARY_DIR",
+			"name" : "Project_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1242,7 +1242,7 @@
 			"value" : "C:/Users/Renata/reu cpp/LABS/lab2/cmake-build-debug"
 		},
 		{
-			"name" : "lab2_IS_TOP_LEVEL",
+			"name" : "Project_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1254,7 +1254,43 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "lab2_SOURCE_DIR",
+			"name" : "Project_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/Renata/reu cpp/LABS/lab2"
+		},
+		{
+			"name" : "cmake_testapp_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/Renata/reu cpp/LABS/lab2/cmake-build-debug"
+		},
+		{
+			"name" : "cmake_testapp_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "cmake_testapp_SOURCE_DIR",
 			"properties" : 
 			[
 				{

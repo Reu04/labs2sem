@@ -4,16 +4,16 @@
 //// Все реализованные классы и основные алгоритмы необходимо покрыть (модульными) тестами.
 /// Реализацию следует оснастить пользовательским интерфейсом (консольным) для проверки корректности реализации.
 
+// TODO 1. деструктор для листа 2. убрать принты
+
 #include <iostream>
 #include <string>
 #include <cassert>
 #include <vector>
 
-#include "DynamicArray.h"
-#include "LinkedList.h"
-#include "Sequence.h"
 #include "ArraySequence.h"
 #include "LinkedListSequence.h"
+#include "UserInterface.h"
 
 void TestDynamicArray() {
     std::cout << "\n\tTest Dynamic Array:\t\n";
@@ -247,8 +247,8 @@ void TestArraySequence() {
 
     //// Constructor:
     ArraySequence<int> Object1(new int[]{1, 2, 3, 4}, 4);
-    ArraySequence<char>* Object2 = new ArraySequence(new char[]{'R', 'e', 'n', 'a', 't', 'a'}, 6);
-    ArraySequence<double>* Object3 = new ArraySequence(new double[]{0, 1.1, 2.2}, 3);
+    ArraySequence<char>* Object2 = new ArraySequence<char>(new char[]{'R', 'e', 'n', 'a', 't', 'a'}, 6);
+    ArraySequence<double>* Object3 = new ArraySequence<double>(new double[]{0, 1.1, 2.2}, 3);
 
     //// Copy constructor:
     ArraySequence<int> Object5(Object1);
@@ -258,6 +258,7 @@ void TestArraySequence() {
     Object2->Print(std::cout);
     Object3->Print(std::cout);
     Object5.Print(std::cout);
+
 
     //// Move constructor:
     ArraySequence<int> Object4 = std::move(Object5);
@@ -362,13 +363,11 @@ void TestArraySequence() {
         Sequence<char>* test4 = new ArraySequence<char>(new char[]{'i', 'r'}, 2);
 
         Sequence<char>* res2 = new ArraySequence<char>(new char[]{'T', 'a', 'g', 'i', 'r'}, 5);
+        assert(*dynamic_cast<ArraySequence<int>*>(test1->Concat(test2))
+               == *dynamic_cast<ArraySequence<int>*>(res1));
+        assert(*dynamic_cast<ArraySequence<char>*>(test3->Concat(test4))
+               == *dynamic_cast<ArraySequence<char>*>(res2));
 
-//        assert(*dynamic_cast<ArraySequence<int>*>(test1->Concat(test2))
-//               == *dynamic_cast<ArraySequence<int>*>(res1));
-
-//        assert(*dynamic_cast<ArraySequence<char>*>(test3->Concat(test4))
-//               == *dynamic_cast<ArraySequence<char>*>(res2));
-//
         std::cout << "\nTest Concat function:\n";
         test1->Concat(test2)->Print(std::cout);
         test3->Concat(test4)->Print(std::cout);
@@ -387,12 +386,12 @@ void TestArraySequence() {
 }
 
 void TestLinkedListSequence() {
-    std::cout << "\n\tTest Linked List Sequence:\t\n";
+    std::cout << "\n\tLinked List Sequence:\t\n";
 
     //// Constructor:
     LinkedListSequence<int> Object1(new int[]{1, 2, 3, 4}, 4);
-    LinkedListSequence<char>* Object2 = new LinkedListSequence(new char[]{'R', 'e', 'n', 'a', 't', 'a'}, 6);
-    LinkedListSequence<double>* Object3 = new LinkedListSequence(new double[]{0, 1.1, 2.2}, 3);
+    LinkedListSequence<char>* Object2 = new LinkedListSequence<char>(new char[]{'R', 'e', 'n', 'a', 't', 'a'}, 6);
+    LinkedListSequence<double>* Object3 = new LinkedListSequence<double>(new double[]{0, 1.1, 2.2}, 3);
 
     //// Copy constructor:
     LinkedListSequence<int> Object5(Object1);
@@ -422,109 +421,111 @@ void TestLinkedListSequence() {
     assert(Object2->Get(3) == 'a');
     assert((Object3->Get(Object3->GetLength() - 2)) == 1.1);
 
+    {
+        //// GetSubsequence:
+        Sequence<int>* test1 = new LinkedListSequence<int>(new int[]{2, 3}, 2);
+        Sequence<char>* test2 = new LinkedListSequence<char>(new char[]{'a', 't', 'a'}, 3);
+        Sequence<double>* test3 = new LinkedListSequence<double>(new double[]{0, 1.1, 2.2}, 3);
 
-//    {
-//        //// GetSubsequence:
-//        Sequence<int>* test1 = new LinkedListSequence<int>(new int[]{2, 3}, 2);
-//        Sequence<char>* test2 = new LinkedListSequence<char>(new char[]{'a', 't', 'a'}, 3);
-//        Sequence<double>* test3 = new LinkedListSequence<double>(new double[]{0, 1.1, 2.2}, 3);
-//
-//        assert(*dynamic_cast<ArraySequence<int>*>(Object1.GetSubsequence(1, 2))
-//               == *dynamic_cast<ArraySequence<int>*>(test1));
-//
-//        assert(*dynamic_cast<ArraySequence<char>*>(Object2->GetSubsequence(3, 5))
-//               == *dynamic_cast<ArraySequence<char>*>(test2));
-//
-//        assert(*dynamic_cast<ArraySequence<double>*>(Object3->GetSubsequence(0, 2))
-//               == *dynamic_cast<ArraySequence<double>*>(test3));
-//
-//        assert(*dynamic_cast<ArraySequence<int>*>(Object4.GetSubsequence(0, 2))
-//               == *dynamic_cast<ArraySequence<int>*>(Object1.GetSubsequence(0, 2)));
-//
-//        std::cout << "\nTest GetSubsequence function:\n";
-//        Object1.GetSubsequence(1, 2)->Print(std::cout);
-//        Object2->GetSubsequence(3, 5)->Print(std::cout);
-//        Object3->GetSubsequence(0, 2)->Print(std::cout);
-//        Object4.GetSubsequence(0, 2)->Print(std::cout);
-//
-//        delete test1;
-//        delete test2;
-//        delete test3;
-//    }
-//
-//
-//    assert(Object1.GetLength() == 4);
-//    assert(Object2->GetLength() == 6);
-//    assert(Object3->GetLength() == 3);
-//    assert(Object4.GetLength() == Object1.GetLength());
-//
-//    //// Append, Prepend, InsertAt:
-//    Object1.Append(1000);
-//    Object2->Append('F');
-//    Object3->Append(3000.55);
-//    Object4.Append(4000);
-//
-//    assert(Object1.GetLast() == 1000);
-//    assert(Object2->GetLast() == 'F');
-//    assert(Object3->GetLast() == 3000.55);
-//    assert(Object4.GetLast() == 4000);
-//
-//    Object1.Prepend(0);
-//    Object2->Prepend('B');
-//    Object3->Prepend(-1.1);
-//    Object4.Prepend(0);
-//
-//    assert(Object1.GetFirst() == 0);
-//    assert(Object2->GetFirst() == 'B');
-//    assert(Object3->GetFirst() == -1.1);
-//    assert(Object4.GetFirst() == 0);
-//
-//    Object1.InsertAt(1, 1);
-//    Object2->InsertAt('P', 0);
-//    Object3->InsertAt(3.3, Object3->GetLength() - 1);
-//    Object4.InsertAt(300, 1);
-//
-//    assert(Object1.Get(1) == 1);
-//    assert(Object2->Get(0) == 'P');
-//    assert(Object3->Get(Object3->GetLength() - 1) == 3.3);
-//    assert(Object4.Get(1) == 300);
-//
-//    std::cout << "\nData after transformations:\n";
-//    Object1.Print(std::cout);
-//    Object2->Print(std::cout);
-//    Object3->Print(std::cout);
-//    Object4.Print(std::cout);
-//
-//    {
-//        //// Concat:
-//        Sequence<int>* test1 = new ArraySequence<int>(new int[]{15, 25}, 2);
-//        Sequence<int>* test2 = new ArraySequence<int>(new int[]{35, 45}, 2);
-//
-//        Sequence<int>* res1 = new ArraySequence<int>(new int[]{15, 25, 35, 45}, 4);
-//
-//        Sequence<char>* test3 = new ArraySequence<char>(new char[]{'T', 'a', 'g'}, 3);
-//        Sequence<char>* test4 = new ArraySequence<char>(new char[]{'i', 'r'}, 2);
-//
-//        Sequence<char>* res2 = new ArraySequence<char>(new char[]{'T', 'a', 'g', 'i', 'r'}, 5);
-//
-////        assert(*dynamic_cast<ArraySequence<int>*>(test1->Concat(test2))
-////               == *dynamic_cast<ArraySequence<int>*>(res1));
-//
-////        assert(*dynamic_cast<ArraySequence<char>*>(test3->Concat(test4))
-////               == *dynamic_cast<ArraySequence<char>*>(res2));
-////
-//        std::cout << "\nTest Concat function:\n";
-//        test1->Concat(test2)->Print(std::cout);
-//        test3->Concat(test4)->Print(std::cout);
-//
-//        delete test1;
-//        delete test2;
-//        delete test3;
-//        delete test4;
-//
-//        delete res1;
-//        delete res2;
-//    }
+        assert(*dynamic_cast<LinkedListSequence<int>*>(Object1.GetSubsequence(1, 2))
+               == *dynamic_cast<LinkedListSequence<int>*>(test1));
+
+        assert(*dynamic_cast<LinkedListSequence<char>*>(Object2->GetSubsequence(3, 5))
+               == *dynamic_cast<LinkedListSequence<char>*>(test2));
+
+        assert(*dynamic_cast<LinkedListSequence<double>*>(Object3->GetSubsequence(0, 2))
+               == *dynamic_cast<LinkedListSequence<double>*>(test3));
+
+        assert(*dynamic_cast<LinkedListSequence<int>*>(Object4.GetSubsequence(0, 2))
+               == *dynamic_cast<LinkedListSequence<int>*>(Object1.GetSubsequence(0, 2)));
+
+        std::cout << "\nTest GetSubsequence function:\n";
+        Object1.GetSubsequence(1, 2)->Print(std::cout);
+        Object2->GetSubsequence(3, 5)->Print(std::cout);
+        Object3->GetSubsequence(0, 2)->Print(std::cout);
+        Object4.GetSubsequence(0, 2)->Print(std::cout);
+
+        delete test1;
+        delete test2;
+        delete test3;
+    }
+
+    assert(Object1.GetLength() == 4);
+    assert(Object2->GetLength() == 6);
+    assert(Object3->GetLength() == 3);
+    assert(Object4.GetLength() == Object1.GetLength());
+
+    //// Append, Prepend, InsertAt:
+    Object1.Append(1000);
+    Object2->Append('F');
+    Object3->Append(3000.55);
+    Object4.Append(4000);
+
+    assert(Object1.GetLast() == 1000);
+    assert(Object2->GetLast() == 'F');
+    assert(Object3->GetLast() == 3000.55);
+    assert(Object4.GetLast() == 4000);
+
+    Object1.Prepend(0);
+    Object2->Prepend('B');
+    Object3->Prepend(-1.1);
+    Object4.Prepend(0);
+
+    assert(Object1.GetFirst() == 0);
+    assert(Object2->GetFirst() == 'B');
+    assert(Object3->GetFirst() == -1.1);
+    assert(Object4.GetFirst() == 0);
+
+    Object1.InsertAt(1, 1);
+    Object2->InsertAt('P', 0);
+    Object3->InsertAt(3.3, Object3->GetLength() - 1);
+    Object4.InsertAt(300, 1);
+
+    Object1.Print(std::cout);
+    Object2->Print(std::cout);
+    Object3->Print(std::cout);
+    Object4.Print(std::cout);
+
+    assert(Object1.Get(1) == 1);
+    assert(Object2->Get(0) == 'P');
+    assert(Object3->Get(Object3->GetLength() - 2) == 3.3);
+    assert(Object4.Get(1) == 300);
+
+    std::cout << "\nData after transformations:\n";
+    Object1.Print(std::cout);
+    Object2->Print(std::cout);
+    Object3->Print(std::cout);
+    Object4.Print(std::cout);
+
+    {
+        //// Concat:
+        Sequence<int>* test1 = new LinkedListSequence<int>(new int[]{15, 25}, 2);
+        Sequence<int>* test2 = new LinkedListSequence<int>(new int[]{35, 45}, 2);
+
+        Sequence<int>* res1 = new LinkedListSequence<int>(new int[]{15, 25, 35, 45}, 4);
+
+        Sequence<char>* test3 = new LinkedListSequence<char>(new char[]{'T', 'a', 'g'}, 3);
+        Sequence<char>* test4 = new LinkedListSequence<char>(new char[]{'i', 'r'}, 2);
+
+        Sequence<char>* res2 = new LinkedListSequence<char>(new char[]{'T', 'a', 'g', 'i', 'r'}, 5);
+
+        assert(*dynamic_cast<LinkedListSequence<int>*>(test1->Concat(test2))
+               == *dynamic_cast<LinkedListSequence<int>*>(res1));
+        assert(*dynamic_cast<LinkedListSequence<char>*>(test3->Concat(test4))
+               == *dynamic_cast<LinkedListSequence<char>*>(res2));
+
+        std::cout << "\nTest Concat function:\n";
+        test1->Print(std::cout);
+        test3->Print(std::cout);
+
+        delete test1;
+        delete test2;
+        delete test3;
+        delete test4;
+
+        delete res1;
+        delete res2;
+    }
 
     delete Object2;
     delete Object3;
@@ -535,6 +536,8 @@ int main() {
     TestLinkedList();
     TestArraySequence();
     TestLinkedListSequence();
+
+    UserInterface();
 
     return 0;
 }

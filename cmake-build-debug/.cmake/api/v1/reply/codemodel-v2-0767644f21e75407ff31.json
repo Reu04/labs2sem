@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "lab2",
+					"name" : "cmake_testapp",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "lab2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-lab2-Debug-01c86ceaacfd8fa0c65b.json",
-					"name" : "lab2",
+					"id" : "cmake_testapp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cmake_testapp-Debug-025b41f7b052f22546d2.json",
+					"name" : "cmake_testapp",
 					"projectIndex" : 0
 				}
 			]

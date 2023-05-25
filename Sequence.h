@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <cassert>
@@ -6,7 +8,7 @@
 template<typename T>
 class Sequence {
 public:
-    virtual ~Sequence() = default;
+    virtual ~Sequence<T>() = default;
 
     virtual T GetFirst() const = 0;
     virtual T GetLast() const = 0;
