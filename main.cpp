@@ -15,11 +15,9 @@
 
 #include "ArraySequence.h"
 #include "LinkedListSequence.h"
-#include "Deque.h"
 
 #include "UserInterface.h"
-
-
+#include "UIforBaseCollections.h"
 
 
 void TestDynamicArray() {
@@ -522,8 +520,8 @@ void TestLinkedListSequence() {
                == *dynamic_cast<LinkedListSequence<char>*>(res2));
 
         std::cout << "\nTest Concat function:\n";
-        test1->Print(std::cout);
-        test3->Print(std::cout);
+        test1->Concat(test2)->Print(std::cout);
+        test3->Concat(test4)->Print(std::cout);
 
         delete test1;
         delete test2;
@@ -1053,10 +1051,19 @@ int main() {
 //    TestLinkedList();
 //    TestArraySequence();
 //    TestLinkedListSequence();
+//
+//    TestDeque();
 
-    //UserInterface();
-
-    TestDeque();
+    {
+        std::cout << "If you want to create a Sequence object, enter 1, otherwise 2: " << std::endl;
+        int choice;
+        std::cin >> choice;
+        if (choice == 1) {
+            UserInterface();
+        } else {
+            UIforBaseCollections();
+        }
+    }
 
     return 0;
 }

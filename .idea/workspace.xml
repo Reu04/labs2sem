@@ -18,10 +18,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be359b5d-e5ad-4115-971a-ceb9dc96aa7d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Deque.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UIforBaseCollections.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deque.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-05-11T10-44-04-0883.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-13T15-32-05-0490.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deque.h" beforeDir="false" afterPath="$PROJECT_DIR$/Deque.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake_testapp.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake_testapp.dir/main.cpp.obj" afterDir="false" />
@@ -106,7 +105,7 @@
       <workItem from="1686670745320" duration="5309000" />
       <workItem from="1686818377155" duration="4291000" />
       <workItem from="1686908039861" duration="13705000" />
-      <workItem from="1687010332388" duration="7269000" />
+      <workItem from="1687010332388" duration="14553000" />
     </task>
     <servers />
   </component>
